@@ -44,7 +44,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return User::find()->where(['id' => $id])->one();
+        $user = User::find()->where(['id' => $id])->one();
+        if (isset($user)) {
+            return new static($user);
+        } else {
+            return null;
+        }
     }    
 
     /**
@@ -52,16 +57,12 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
         return null;
     }
 
-    public function getId(){}
+    public function getId(){
+        return $this->id;
+    }
 
     /**
      * Finds user by username
@@ -71,7 +72,29 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return User::find()->where(['username' => $username])->one();
+        $user = User::find()->where(['username' => $username])->one();
+        if (isset($user)) {
+            return new static($user);
+        } else {
+            return null;
+        }
+    }
+
+
+    /**
+     * @inheritdoc
+     */
+    public function getAuthKey()
+    {
+        return null;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function validateAuthKey($authKey)
+    {
+        return false;
     }
 
     /**
@@ -82,11 +105,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return User::find()->where(['password' => $password])->one();
+        return $this->password === $password;
     }
-
-
-    public function getAuthKey(){}
-
-    public function validateAuthKey($authKey){}
 }

@@ -5,14 +5,14 @@ namespace app\controllers;
 use Yii;
 use app\models\Realty;
 use app\models\RealtySearch;
-use yii\web\Controller;
+use app\components\BaseController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * RealtyController implements the CRUD actions for Realty model.
  */
-class RealtyController extends Controller
+class RealtyController extends BaseController
 {
     public function behaviors()
     {

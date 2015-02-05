@@ -4,13 +4,14 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
+use app\components\BaseController;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Realty;
+use app\models\RealtySearch;
 
-class RealtyController extends Controller
+class SiteController extends BaseController
 {
     public function behaviors()
     {
@@ -46,8 +47,13 @@ class RealtyController extends Controller
 
     public function actionIndex()
     {
-        $realtys = Realty::find()->all();
-        return $this->render('index', ['realtys'=> $realtys]);
+        $searchModel = new RealtySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     public function actionLogin()

@@ -34,14 +34,7 @@ AppAsset::register($this);
             ]);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => [
-                    ['label' => 'Home', 'url' => ['/realty/index']],
-                    Yii::$app->user->isGuest ?
-                        ['label' => 'Login', 'url' => ['/realty/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                            'url' => ['/realty/logout'],
-                            'linkOptions' => ['data-method' => 'post']],
-                ],
+                'items' => $this->context->getMenu(),
             ]);
             NavBar::end();
         ?>
