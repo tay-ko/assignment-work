@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 use app\models\Realty;
 use app\models\RealtySearch;
 use app\components\BaseController;
@@ -17,6 +18,16 @@ class RealtyController extends BaseController
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'update', 'delete', 'create', 'view'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -33,7 +44,9 @@ class RealtyController extends BaseController
     public function actionIndex()
     {
         $searchModel = new RealtySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $params = Yii::$app->request->queryParams;
+        $params['user_id'] = Yii::$app->user->id;
+        $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -61,6 +74,7 @@ class RealtyController extends BaseController
     public function actionCreate()
     {
         $model = new Realty();
+        $model->id_user = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

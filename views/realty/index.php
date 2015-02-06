@@ -25,13 +25,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'id_user',
-            'id_type',
-            'id_status',
-            // 'date',
-            // 'price',
+            [   
+                'attribute' => 'id_type',
+                'value' => function($data) {
+                    if (isset($data->type)) {
+                        return $data->type->name;
+                    }
+
+                    return "";
+                } 
+            
+            ],
+            [   
+                'attribute' => 'id_status',
+                'value' => function($data) {
+                    if (isset($data->status)) {
+                        return $data->status->name;
+                    }
+
+                    return "";
+                } 
+            
+            ],
+            'date',
+            'price',
             // 'address',
             // 'long',
             // 'lat',

@@ -55,9 +55,9 @@ class Realty extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'id_user' => 'Id User',
-            'id_type' => 'Id Type',
-            'id_status' => 'Id Status',
+            'id_user' => 'User',
+            'id_type' => 'Type',
+            'id_status' => 'Status',
             'date' => 'Date',
             'price' => 'Price',
             'address' => 'Address',
@@ -77,7 +77,7 @@ class Realty extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdStatus()
+    public function getStatus()
     {
         return $this->hasOne(Status::className(), ['id' => 'id_status']);
     }
@@ -85,7 +85,7 @@ class Realty extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdType()
+    public function getType()
     {
         return $this->hasOne(Type::className(), ['id' => 'id_type']);
     }
@@ -93,7 +93,7 @@ class Realty extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUser()
+    public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }

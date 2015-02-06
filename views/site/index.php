@@ -15,28 +15,56 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Realty', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'id_user',
-            'id_type',
-            'id_status',
+            [   
+                'attribute' => 'id_type',
+                'value' => function($data) {
+                    if (isset($data->type)) {
+                        return $data->type->name;
+                    }
+
+                    return "";
+                } 
+            
+            ],
+            [   
+                'attribute' => 'id_status',
+                'value' => function($data) {
+                    if (isset($data->status)) {
+                        return $data->status->name;
+                    }
+
+                    return "";
+                } 
+            
+            ],
+            [   
+                'attribute' => 'id_user',
+                'value' => function($data) {
+                    if (isset($data->user)) {
+                        return $data->user->username;
+                    }
+
+                    return "";
+                } 
+            
+            ],
             // 'date',
             // 'price',
             // 'address',
             // 'long',
             // 'lat',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+            ],
         ],
     ]); ?>
 
