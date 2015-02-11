@@ -3,12 +3,13 @@
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
+use app\components\BaseController;
 use app\models\Realty;
 use app\models\RealtySearch;
-use app\components\BaseController;
-use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 /**
  * RealtyController implements the CRUD actions for Realty model.
@@ -75,14 +76,27 @@ class RealtyController extends BaseController
     {
         $model = new Realty();
         $model->id_user = Yii::$app->user->id;
+        
+        if ( Yii::$app->request->isPost ) {
+            $model->load(Yii::$app->request->post());
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->image) {
+                $fileName = $model->image->baseName . '.' . $model->image->extension;     
+                if ($model->image->saveAs('uploads/' . $fileName)) {
+                    $model->file = $fileName;
+                }
+                if ($model->save(false)) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+        }
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        } 
             return $this->render('create', [
                 'model' => $model,
             ]);
-        }
     }
 
     /**
@@ -95,13 +109,22 @@ class RealtyController extends BaseController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        if ( Yii::$app->request->isPost ) {
+            $model->load(Yii::$app->request->post());
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->image) {
+                $fileName = $model->image->baseName . '.' . $model->image->extension;     
+                if ($model->image->saveAs('uploads/' . $fileName)) {
+                    $model->file = $fileName;
+                }
+                if ($model->save(false)) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
         }
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**

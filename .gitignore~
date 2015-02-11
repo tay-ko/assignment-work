@@ -28,5 +28,4 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-.phpintel
-/web/assets
+
