@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\components\BaseController;
 use app\models\Realty;
+use app\models\RealtyCategory;
 use app\models\RealtySearch;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -23,7 +24,7 @@ class RealtyController extends BaseController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['index', 'update', 'delete', 'create', 'view'],
+                        'actions' => ['index', 'update', 'delete', 'create', 'view', 'category'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
