@@ -56,6 +56,9 @@ class SiteController extends BaseController
         ]);
     }
 
+
+    
+
     /**
      * Displays a single Realty model.
      * @param integer $id

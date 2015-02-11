@@ -21,6 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            [   
+                'attribute' => 'imagePath',
+                'format'=>'image',
+            ],
+
             'name',
             [   
                 'attribute' => 'id_type',
@@ -55,11 +60,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 } 
             
             ],
-            // 'date',
-            // 'price',
-            // 'address',
-            // 'long',
-            // 'lat',
 
             [
                 'class' => 'yii\grid\ActionColumn',

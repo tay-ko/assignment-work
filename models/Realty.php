@@ -25,6 +25,7 @@ use Yii;
  */
 class Realty extends \yii\db\ActiveRecord
 {
+    public $image;
     /**
      * @inheritdoc
      */
@@ -42,8 +43,9 @@ class Realty extends \yii\db\ActiveRecord
             [['name', 'id_user', 'id_type', 'id_status', 'date', 'price', 'address', 'long', 'lat'], 'required'],
             [['id_user', 'id_type', 'id_status'], 'integer'],
             [['date'], 'safe'],
+            [['image'], 'file'],
             [['price', 'long', 'lat'], 'number'],
-            [['name', 'address'], 'string', 'max' => 255]
+            [['name', 'address','file'], 'string', 'max' => 255]
         ];
     }
 
@@ -64,6 +66,14 @@ class Realty extends \yii\db\ActiveRecord
             'long' => 'Long',
             'lat' => 'Lat',
         ];
+    }
+
+    public function getImagePath() {
+        if (!empty($this->file)) {
+            return '/uploads/'. $this->file;
+        } else {
+            return null;
+        }
     }
 
     /**
