@@ -25,6 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            [   
+                'attribute' => 'imagePath',
+                'format'=>'image',
+            ],
+
             'name',
             [   
                 'attribute' => 'id_type',
@@ -49,7 +54,11 @@ $this->params['breadcrumbs'][] = $this->title;
             
             ],
             'date',
-            'price',
+
+            [
+                'attribute'=>'price',
+                'options'=>array('style'=>'width:10px; border:none'),    
+            ],
             // 'address',
             // 'long',
             // 'lat',
