@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
 </div>
+<span class="popular-title">Популярные обьявления</span>
 <div class="gallery">
     <ul>
     <?php foreach ($populars as $popular): ?>

@@ -118,6 +118,7 @@ float:left;
 margin:50px 10px 0 10px; /* отступы для кнопок */ 
 }
 .gallery {
+margin-left: 28px;
 float:left;
 background-color:#FFCC99;
 border:solid thin #FF9933;
@@ -125,3 +126,9 @@ border:solid thin #FF9933;
 .gallery li{
 margin: 3px; /* пробел вокруг изображений */
 } 
+.popular-title{
+margin-left: 462px;
+color: #337ab7;
+text-decoration: none;
+font-size: 16px;
+}

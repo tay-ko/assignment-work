@@ -7,7 +7,7 @@ auto: 4000,
 speed: 400, 
 vertical: false,
 circular: true,
-visible: 3,
+visible: 7,
 start: 0,
 scroll: 1
 });

@@ -5,24 +5,27 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Type;
 use app\models\Status;
-use \yii\jui\DatePicker;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Realty */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="realty-form">
+<div class="realty-form" style="width:360px;">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 
-     <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->all(), 'id', 'name')) ?>
+    <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'id_status')->dropDownList(ArrayHelper::map(Status::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?= $form->field($model,'date')->widget(DatePicker::className(),[
+    'language' => 'ru',
+    'dateFormat' => 'yyyy-MM-dd',
+]) ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 
