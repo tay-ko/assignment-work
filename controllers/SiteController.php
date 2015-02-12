@@ -5,11 +5,13 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use app\components\BaseController;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Realty;
 use app\models\RealtySearch;
+use app\models\User;
 
 class SiteController extends BaseController
 {
@@ -103,6 +105,18 @@ class SiteController extends BaseController
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionRegistration() 
+    {
+        $model = new User;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'User successfully register');
+            return $this->redirect(Url::to(['/site/login']));
+        }
+        return $this->render('registration', [
+            'model' => $model,
+        ]);
     }
 
     public function actionLogout()

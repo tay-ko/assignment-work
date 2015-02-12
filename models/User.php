@@ -21,7 +21,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [['id', 'username', 'password'], 'required'],
+            [['username', 'password'], 'required'],
             [['id'], 'integer'],
             [['username', 'password'], 'string', 'max' => 255]
         ];
@@ -80,6 +80,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         }
     }
 
+    public function beforeSave($insert) {
+        $this->password = md5($this->password);
+        return parent::beforeSave($insert);
+    }
 
     /**
      * @inheritdoc
@@ -105,6 +109,6 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return $this->password === md5($password);
     }
 }
