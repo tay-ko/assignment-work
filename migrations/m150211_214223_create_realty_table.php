@@ -9,6 +9,7 @@ class m150211_214223_create_realty_table extends Migration
         $this->createTable('realty', array(
             'id'=>'pk',
             'name' => 'varchar(255) NOT NULL',
+            'phone' => 'varchar(255) NOT NULL',
             'id_user' => 'int(10) NOT NULL',
             'id_type' => 'int(10) NOT NULL',
             'id_status' => 'int(10) NOT NULL',

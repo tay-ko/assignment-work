@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'imagePath',
                 'format'=>'image',
             ],
-
+            'phone',
             'name',
             [   
                 'attribute' => 'id_type',
@@ -42,8 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 } 
             
             ],
+
             [   
                 'attribute' => 'id_status',
+                'options'=>array('style'=>'width:10px; border:none'),   
                 'value' => function($data) {
                     if (isset($data->status)) {
                         return $data->status->name;
@@ -53,7 +55,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 } 
             
             ],
-            'date',
+            
+
+            [
+                'attribute'=>'date',
+                'options'=>array('style'=>'width:100px; border:none'),    
+            ],
 
             [
                 'attribute'=>'price',

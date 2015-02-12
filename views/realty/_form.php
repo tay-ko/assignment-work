@@ -17,15 +17,16 @@ use yii\jui\DatePicker;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'phone')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'id_status')->dropDownList(ArrayHelper::map(Status::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model,'date')->widget(DatePicker::className(),[
-    'language' => 'ru',
-    'dateFormat' => 'yyyy-MM-dd',
-]) ?>
+    <?= $form->field($model,'date')->widget(DatePicker::className(),
+        ['language' => 'ru','dateFormat' => 'yyyy-MM-dd',]) 
+    ?>
+
 
     <?= $form->field($model, 'price')->textInput() ?>
 

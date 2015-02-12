@@ -40,12 +40,12 @@ class Realty extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'id_user', 'id_type', 'id_status', 'date', 'price', 'address', 'long', 'lat'], 'required'],
+            [['name', 'id_user', 'id_type', 'id_status', 'date', 'price', 'address'], 'required'],
             [['id_user', 'id_type', 'id_status'], 'integer'],
             [['date'], 'safe'],
             [['image'], 'file'],
             [['price', 'long', 'lat'], 'number'],
-            [['name', 'address','file'], 'string', 'max' => 255]
+            [['name','phone','address','file'], 'string', 'max' => 255]
         ];
     }
 
@@ -57,6 +57,7 @@ class Realty extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'phone' => 'Phone number',
             'id_user' => 'User',
             'id_type' => 'Type',
             'id_status' => 'Status',

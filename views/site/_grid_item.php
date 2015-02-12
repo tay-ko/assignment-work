@@ -14,7 +14,7 @@ use yii\helpers\Url;
 			<h4><a href="<?= Url::toRoute(['/site/view', 'id' => $item->id]);?>"><?= $item->name;?><a></h4>
 			<p>Address: <?= $item->address?></p>
 			<p>Price: $<?= $item->price?></p>
-			<p>Contacts: <?= implode(', ', ArrayHelper::map($item->getPhones(), 'id','number'))?>
+			<p>Contacts: <?= $item->phone?>
 		</div>
 	</div>
 		<div class="panel-footer">

@@ -10,10 +10,22 @@ use yii\grid\GridView;
 $this->title = 'Realties';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="realty-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+<span class="popular-title">Популярные обьявления</span>
+<div class="gallery">
+    <ul>
+    <?php foreach ($populars as $popular): ?>
+        <li><img src="<?= '/uploads/'.$popular->file ?>" alt="" width="150" height="100" /></li>
+    <?php endforeach; ?>    
+    </ul>
+</div>
+
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -31,11 +43,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
 </div>
-<span class="popular-title">Популярные обьявления</span>
-<div class="gallery">
-    <ul>
-    <?php foreach ($populars as $popular): ?>
-        <li><img src="<?= '/uploads/'.$popular->file ?>" alt="" width="150" height="100" /></li>
-    <?php endforeach; ?>    
-    </ul>
-</div>
+
