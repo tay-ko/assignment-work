@@ -12,6 +12,7 @@ class BaseController extends Controller {
         return [
         	['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Login', 'url' => ['/site/login']],
+            ['label' => 'Registration', 'url' => ['/site/registration']],
         ];
       } else {
         return [

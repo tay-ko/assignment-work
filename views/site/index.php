@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="gallery">
     <ul>
     <?php foreach ($populars as $popular): ?>
-        <li><img src="<?= '/uploads/'.$popular->file ?>" alt="" width="150" height="100" /></li>
+        <li><img src="<?= $popular->getImagePath()?>" alt="" width="150" height="100" /></li>
     <?php endforeach; ?>    
     </ul>
 </div>
