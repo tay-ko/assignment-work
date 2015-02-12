@@ -72,7 +72,7 @@ class Realty extends \yii\db\ActiveRecord
         if (!empty($this->file)) {
             return '/uploads/'. $this->file;
         } else {
-            return null;
+            return 'http://placehold.it/150';
         }
     }
 
@@ -81,7 +81,7 @@ class Realty extends \yii\db\ActiveRecord
      */
     public function getPhones()
     {
-        return $this->hasMany(Phone::className(), ['id_realty' => 'id']);
+        return $this->hasMany(Phone::className(), ['id_realty' => 'id'])->all();
     }
 
     /**

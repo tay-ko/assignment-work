@@ -97,6 +97,19 @@ a.desc:after {
 
 
 td img {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+table.realty-table {
+    width: 100%;
+}
+
+.realty-table .thumbnail {
+    width: 160px;
+    float: left;
+}
+
+.realty-table .content {
+    margin-left: 178px;
 }

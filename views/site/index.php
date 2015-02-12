@@ -18,52 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'summary' => false,
+        'tableOptions' => ['class' => 'realty-table'],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            [   
-                'attribute' => 'imagePath',
-                'format'=>'image',
-            ],
-
-            'name',
-            [   
-                'attribute' => 'id_type',
-                'value' => function($data) {
-                    if (isset($data->type)) {
-                        return $data->type->name;
-                    }
-
-                    return "";
-                } 
-            
-            ],
-            [   
-                'attribute' => 'id_status',
-                'value' => function($data) {
-                    if (isset($data->status)) {
-                        return $data->status->name;
-                    }
-
-                    return "";
-                } 
-            
-            ],
-            [   
-                'attribute' => 'id_user',
-                'value' => function($data) {
-                    if (isset($data->user)) {
-                        return $data->user->username;
-                    }
-
-                    return "";
-                } 
-            
-            ],
-
             [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}',
+                'format' => 'html', 
+                'value' => function($data) {
+                    return $this->render('_grid_item', array('item' => $data));
+                }
             ],
         ],
     ]); ?>
