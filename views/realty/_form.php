@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Type;
+use app\models\Status;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Realty */
@@ -14,9 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'id_type')->textInput() ?>
+    <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->all(), 'id', 'name')) ?>
 
-    <?= $form->field($model, 'id_status')->textInput() ?>
+    <?= $form->field($model, 'id_status')->dropDownList(ArrayHelper::map(Status::find()->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 
