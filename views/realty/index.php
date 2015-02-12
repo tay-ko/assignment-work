@@ -54,7 +54,11 @@ $this->params['breadcrumbs'][] = $this->title;
             
             ],
             'date',
-            'price',
+
+            [
+                'attribute'=>'price',
+                'options'=>array('style'=>'width:10px; border:none'),    
+            ],
             // 'address',
             // 'long',
             // 'lat',

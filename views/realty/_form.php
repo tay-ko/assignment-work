@@ -17,9 +17,10 @@ use app\models\Status;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->all(), 'id', 'name')) ?>
+     <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'id_status')->dropDownList(ArrayHelper::map(Status::find()->all(), 'id', 'name')) ?>
+
 
     <?= $form->field($model, 'date')->textInput() ?>
 

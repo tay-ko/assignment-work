@@ -27,7 +27,15 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+<<<<<<< HEAD
 .phpintel
 untitled.sublime-project
 untitled.sublime-workspace
 /web/assets
+=======
+
+.phpintel
+/web/assets
+untitled.sublime-workspace
+untitled.sublime-project
+>>>>>>> 34ba500b97e3e95e12815d85ca0c06e05f2eb464
