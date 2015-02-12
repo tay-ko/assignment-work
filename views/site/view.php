@@ -54,6 +54,4 @@ $this->registerJs("
 </div>
 
 
-
-
 <div id="map-canvas"></div>

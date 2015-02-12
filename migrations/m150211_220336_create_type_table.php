@@ -10,7 +10,8 @@ class m150211_220336_create_type_table extends Migration
             'id'=>'pk',
             'name' => 'varchar(255) NOT NULL',
         ));
-        $this->insert('type', array("name" => "Draft",'jhiuyuy'));
+        $sql = "insert into type (name) values ('Гаражи'), ('Квартиры'), ('Дачи'), ('Земельные участки');";
+        $this->execute($sql);
     }
 
     public function down() {

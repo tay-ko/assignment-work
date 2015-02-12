@@ -10,6 +10,9 @@ class m150211_220205_create_status_table extends Migration
             'id'=>'pk',
             'name' => 'varchar(255) NOT NULL',
         ));
+
+        $sql = "insert into status (name) values ('Продам'), ('Куплю'),('Обмен');";
+        $this->execute($sql);
     }
 
     public function down() {

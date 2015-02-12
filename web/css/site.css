@@ -100,3 +100,16 @@ td img {
   max-width: 100px;
   max-height: 100px;
 }
+
+#button {
+float:left;
+margin:50px 10px 0 10px; /* отступы для кнопок */ 
+}
+.gallery {
+float:left;
+background-color:#FFCC99;
+border:solid thin #FF9933;
+}
+.gallery li{
+margin: 3px; /* пробел вокруг изображений */
+} 
