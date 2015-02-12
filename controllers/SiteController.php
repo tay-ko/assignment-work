@@ -53,6 +53,7 @@ class SiteController extends BaseController
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'populars' =>Realty::getPopularItems()
         ]);
     }
 
@@ -67,7 +68,7 @@ class SiteController extends BaseController
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id)
         ]);
     }
 

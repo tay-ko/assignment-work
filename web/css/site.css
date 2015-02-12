@@ -95,7 +95,6 @@ a.desc:after {
     height: 400px;
   }
 
-
 td img {
   max-width: 150px;
   max-height: 150px;
@@ -113,3 +112,16 @@ table.realty-table {
 .realty-table .content {
     margin-left: 178px;
 }
+
+#button {
+float:left;
+margin:50px 10px 0 10px; /* отступы для кнопок */ 
+}
+.gallery {
+float:left;
+background-color:#FFCC99;
+border:solid thin #FF9933;
+}
+.gallery li{
+margin: 3px; /* пробел вокруг изображений */
+} 

@@ -107,4 +107,9 @@ class Realty extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'id_user']);
     }
+
+    public static function getPopularItems()
+    {
+        return Realty::find()->orderBy('price')->limit(10)->all();
+    }
 }

@@ -1,9 +1,14 @@
-var dropdowns = $('.dropdown');
-dropdowns.click(function() {
-  if ( $(this).hasClass('active') ){
-    $(this).toggleClass('active');
-  } else {
-    dropdowns.removeClass('active');
-    $(this).toggleClass('active');
-  }
+$(document).ready(function() {
+$(".gallery").jCarouselLite({
+btnNext: ".next",
+btnPrev: ".prev",
+mouseWheel: true,
+auto: 4000,  
+speed: 400, 
+vertical: false,
+circular: true,
+visible: 3,
+start: 0,
+scroll: 1
+});
 });

@@ -5,6 +5,8 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\models\Type;
 use app\models\Status;
+use \yii\jui\DatePicker;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Realty */
 /* @var $form yii\widgets\ActiveForm */
@@ -19,7 +21,6 @@ use app\models\Status;
      <?= $form->field($model, 'id_type')->dropDownList(ArrayHelper::map(Type::find()->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'id_status')->dropDownList(ArrayHelper::map(Status::find()->all(), 'id', 'name')) ?>
-
 
     <?= $form->field($model, 'date')->textInput() ?>
 
